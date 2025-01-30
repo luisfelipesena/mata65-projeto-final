@@ -1,142 +1,60 @@
-\documentclass[12pt, a4paper]{report}
-\usepackage[top=3cm,left=3cm,right=2cm,bottom=2cm]{geometry}
-\linespread{1.3}
-\setlength{\parindent}{1.25cm}
-\usepackage{indentfirst}
-\usepackage[utf8]{inputenc}
-\usepackage[brazil]{babel}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{color}
-\usepackage{multicol}
-\usepackage[normalem]{ulem}
-\usepackage{wrapfig}
-\usepackage{caption}
-\usepackage{fancybox}
-\usepackage[pdfstartview=FitH]{hyperref}
-\usepackage{subfigure}
-\bibliographystyle{plain}
+\documentclass[aspectratio=169,xcolor=table]{beamer}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum, lmodern}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage[portuguese]{babel}
 
+% ------------------------------------------------
+% Tema do Beamer (exemplo de um tema customizado)
+% ------------------------------------------------
+\usetheme{DCC} % <-- Ajuste conforme seu tema ou estilo
 
-\graphicspath{{Figuras/}{resultados/}}
+\graphicspath{{imgs/}{./imgs/}}
 
-\renewcommand{\theenumii}{\alph{enumii}}
-\DeclareMathOperator{\sen}{sen}
-\DeclareMathOperator{\tg}{tg}
-\DeclareMathOperator{\arctg}{arctg}
-\DeclareMathOperator{\cotg}{cotg}
-\DeclareMathOperator{\agm}{agm}
-
-\newtheorem{thm}{Teorema}[section]
-\newtheorem{dfn}{Definição}[section]
-\newtheorem{prob}{Problema}[section]
-\newtheorem{cor}{Corolário}[section]
-\newtheorem{prop}{Proposição}[section]
-\newtheorem{lem}{Lema} [section]
-
-\newcounter{contar}
-%  #endregion preâmbulo
-
-% #region Variáveis 
-\newcommand{\nomeUniversidade}{Universidade Federal da Bahia}
-\newcommand{\nomeInstituto}{Instituto de Computação}
-\newcommand{\nomeCurso}{MATA65 - Computação Gráfica}
-\newcommand{\nomeProfessor}{Antonio Lopes Apolinário Junior}
-\newcommand{\nomeGrupo}{
-    \sc{\large{Antoniel Magalhães}} \\
-    \sc{\large{Luis Felipe}}
+\author[Magalhães, Felipe]{%
+  \textbf{Antoniel Magalhães} \\
+  \textbf{Luis Felipe}
 }
-\newcommand{\titulo}{\sc{\Large{Simulação de ondas e oceano}}}
-% #endregion Variáveis 
+\title{Simulação de ondas e oceano}
+\institute{Universidade Federal da Bahia \\ Instituto de Computação}
+\date{\today}
 
 \begin{document}
 
-% #region capa
-\pagestyle{empty}
-\begin{center}
-\includegraphics[height=2.5cm]{UFBA.jpg}
-\hspace{2cm}
-\end{center}
+%-------------------------------------------------
+%  SLIDE DE TÍTULO
+%-------------------------------------------------
+\begin{frame}[plain,noframenumbering]
+    \titlepage
+\end{frame}
 
-\begin{center}
-\sc{\large{\nomeUniversidade}} \\
-\sc{\large{\nomeInstituto}} \\
-\sc{\small{\nomeCurso}} \\
+%-------------------------------------------------
+%  SLIDE DE AGENDA
+%-------------------------------------------------
+\begin{frame}{Agenda}
+    \tableofcontents
+\end{frame}
 
-\vspace{4cm}
-
-\titulo
-
-\vspace{4.5cm}
-
-\nomeGrupo
+%=================================================
+\section{Introdução}
+%=================================================
 
 
-\vspace{5.5cm}
-
-\textbf{Salvador - Bahia} \\
-\today
-\end{center}
-% #endregion capa
-
-% #region folha de rosto
-\newpage
-\begin{center}
-\titulo
-
-\vspace{4cm}
-
-\nomeGrupo
-\end{center}
-
-\vspace{4cm}
-
-\begin{flushright}
-\begin{minipage}{8.6cm}
-Projeto final entregue ao professor \nomeProfessor\ 
-como método avaliativo da disciplina \nomeCurso
-
-
-\end{minipage}
-\end{flushright}
- 
-\vspace{8cm}
-
-
-\begin{center}
-\textbf{Salvador - Bahia} \\
-\today
-\end{center}
-
-% #endregion folha de rosto
-
-% #region Índice
-\newpage
-\tableofcontents
-\thispagestyle{empty}
-\newpage
-\setcounter{page}{1}
-\pagestyle{plain}
-% #endregion Índice
-
-
-\chapter{Introdução}
-
-\section{Contextualização e Motivação}
-A teoria dos grafos oferece um poderoso conjunto de ferramentas matemáticas para modelar e resolver problemas complexos de otimização em redes. No contexto da segurança pública, o problema de posicionamento de câmeras de vigilância pode ser elegantemente modelado como um problema de cobertura mínima de vértices (Minimum Vertex Cover). Nesta abordagem, os vértices do grafo representam possíveis localizações de câmeras, e as arestas representam as áreas que precisam ser monitoradas. O bairro de Ondina, em Salvador, apresenta um cenário ideal para aplicação deste conceito, por concentrar pontos estratégicos como a Universidade Federal da Bahia, estabelecimentos comerciais, hotéis e áreas residenciais, além de um intenso fluxo turístico devido às suas praias.
-
-%-------------Bibliografia------------------
-\newpage
-\renewcommand{\refname}{Referências Bibliográficas}
-\addcontentsline{toc}{chapter}{Referências Bibliográficas}
-\bibliography{Bibliografia}
-\nocite{*}
-
+%=================================================
+\section{Referências}
+%=================================================
+\begin{frame}{Referências}
+    \begin{itemize}
+        \item Goldbarg, M. e Goldbarg, E. (2012). \emph{Grafos: Conceitos, algoritmos e aplicações}. Elsevier.
+        \item Holland, J. H. (1975). \emph{Adaptation in Natural and Artificial Systems}. University of Michigan Press.
+        \item Linden, R. (2006). \emph{Livro algoritmos geneticos}.
+        \item Kleinberg, J. e Tardos, E. (2006). \emph{Algorithm Design}. Pearson Education.
+        \item Repositório do Projeto: \url{https://github.com/antoniel/mata53-projeto-final}
+    \end{itemize}
+\end{frame}
 
 \end{document}

@@ -1,3 +1,54 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
+
+\bibitem{AhmadiJavid2017}
+A.~Ahmadi-Javid, P.~Seyedi, and S.~S. Syam.
+\newblock A survey of healthcare facility location.
+\newblock {\em Computers and Operations Research}, 79:223--263, 2017.
+
+\bibitem{Chuan2019}
+Z.~Chuan, Y.~Li, P.~Tian, and X.~Zhang.
+\newblock Capacitated facility location problem with drone delivery.
+\newblock {\em Transportation Research Part E: Logistics and Transportation Review}, 127:129--150, 2019.
+
+\bibitem{Colombo2018}
+Victor de~Oliveira~Colombo.
+\newblock Material didático sobre algoritmos gulosos, 2018.
+
+\bibitem{goldbarg2012}
+Marco Goldbarg and Elizabeth Goldbarg.
+\newblock {\em Grafos: Conceitos, algoritmos e aplicações}.
+\newblock Elsevier, Rio de Janeiro, 2012.
+
+\bibitem{Holland1975}
+John~H. Holland.
+\newblock {\em Adaptation in Natural and Artificial Systems}.
+\newblock University of Michigan Press, Ann Arbor, MI, 1975.
+\newblock Pioneering work on genetic algorithms and their theoretical foundations.
+
+\bibitem{kleinberg2006algorithm}
+Jon Kleinberg and \'Eva Tardos.
+\newblock {\em Algorithm Design}.
+\newblock Pearson Education, Inc., 2006.
+
+\bibitem{Linden2006}
+Ricardo Linden.
+\newblock {\em Livro algoritmos geneticos}.
+\newblock 2006.
+\newblock Introdução aos algoritmos genéticos com foco em implementação em Java.
+
+\bibitem{Pizzolato2012}
+Nelio~Domingues Pizzolato, Fernanda~MP Raupp, and Guina~Sotomayor Alzamora.
+\newblock Revisão de desafios aplicados em localização com base em modelos da p-mediana e suas variantes.
+\newblock {\em Pesquisa Operacional para o Desenvolvimento}, 4(1):13--42, 2012.
+
+\bibitem{Silva2019}
+F.~Silva and M.~Maestria.
+\newblock Optimal location of electric vehicle charging stations: A review.
+\newblock {\em Transportation Research Part D: Transport and Environment}, 71:143--158, 2019.
+
+\bibitem{veloso2021localizacao}
+Luiz Augusto~Silva Veloso, Letícia~Alves da~Silva, and Fábio~Pires Mourão.
+\newblock AplicaÇÃo do problema de localizaÇÃo de facilidades À alocaÇÃo de meios de seguranÇa.
+\newblock In {\em IX Seminário de Iniciação Científica do IFMG}. Instituto Federal de Minas Gerais (IFMG), July 2021.
 
 \end{thebibliography}
