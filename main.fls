@@ -506,6 +506,14 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmsso8.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
+OUTPUT main.vrb
+INPUT ./main.vrb
+INPUT ./main.vrb
+INPUT main.vrb
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
@@ -526,3 +534,4 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso10.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsso8.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb

@@ -160,6 +160,61 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Implementação em JavaScript}
+    \begin{itemize}
+        \item Exemplo simplificado de implementação:
+    \end{itemize}
+    \begin{verbatim}
+class OceanWaveSimulator {
+    constructor(width, height, gridSize) {
+        this.width = width;
+        this.height = height;
+        this.gridSize = gridSize;
+        this.vertices = new Float32Array(gridSize * gridSize * 3);
+        this.time = 0;
+    }
+
+    updateWaveSurface() {
+        const g = 9.81;  // gravity
+        const k = 2;     // wave number
+        const w = Math.sqrt(g * k);  // angular frequency
+        
+        for(let x = 0; x < this.gridSize; x++) {
+            for(let z = 0; z < this.gridSize; z++) {
+                const idx = (x + z * this.gridSize) * 3;
+                const xPos = (x / this.gridSize) * this.width;
+                const zPos = (z / this.gridSize) * this.height;
+                
+                // Gerstner wave implementation
+                this.vertices[idx] = xPos - 
+                    (k * this.amplitude * 
+                     Math.sin(k * xPos - w * this.time));
+                     
+                this.vertices[idx + 1] = 
+                    this.amplitude * 
+                    Math.cos(k * xPos - w * this.time);
+                    
+                this.vertices[idx + 2] = zPos;
+            }
+        }
+        
+        this.time += 0.016;  // ~60fps
+    }
+
+    calculateNormals() {
+        // Normal calculation for lighting
+        const normal = new Vector3();
+        const dx = this.amplitude * k * 
+            Math.cos(k * x - w * this.time);
+        const dy = -this.amplitude * 
+            Math.sin(k * x - w * this.time);
+        normal.set(-dx, 1, -dy).normalize();
+        return normal;
+    }
+}
+    \end{verbatim}
+\end{frame}
+
 %=================================================
 \section{Referências}
 %=================================================
