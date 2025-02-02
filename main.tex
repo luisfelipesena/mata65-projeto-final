@@ -7,6 +7,8 @@
 \usepackage{csquotes}
 \usepackage{xcolor}
 \usepackage[portuguese]{babel}
+\usepackage{amsmath}
+\usepackage{physics}
 
 % ------------------------------------------------
 % Tema do Beamer (exemplo de um tema customizado)
@@ -62,7 +64,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Assumptions of Linear Theory}
+\begin{frame}{Pressupostos da Teoria Linear}
     \begin{itemize}
         \item A teoria linear assume que: o fluido é homogêneo, incompressível (densidade constante) e irrotacional, permitindo a existência do potencial de velocidade.
         \item A tensão superficial é desprezada.
@@ -75,8 +77,66 @@
 
 \begin{frame}{Equação de Laplace}
     \begin{itemize}
-        \item Em face das suposições iniciais supracitadas, torna-se possível desenvolver as formulações da teoria linear a partir da solução da equação de Laplace.
-        \item Esta equação é obtida reescrevendo a equação da continuidade no plano x,z em função do potencial de velocidade.
+        \item A equação de Laplace para o potencial de velocidade $\phi(x,z,t)$ em duas dimensões é:
+        \[\nabla^2\phi = \frac{\partial^2\phi}{\partial x^2} + \frac{\partial^2\phi}{\partial z^2} = 0\]
+        \item As condições de contorno são:
+        \begin{itemize}
+            \item Cinemática da superfície livre: $\frac{\partial \eta}{\partial t} = \frac{\partial \phi}{\partial z}$ em $z = \eta(x,t)$
+            \item Dinâmica da superfície livre: $\frac{\partial \phi}{\partial t} + g\eta = 0$ em $z = \eta(x,t)$
+            \item Condição de fundo: $\frac{\partial \phi}{\partial z} = 0$ em $z = -h$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Solução da Equação de Laplace}
+    \begin{itemize}
+        \item A solução para o potencial de velocidade é:
+        \[\phi(x,z,t) = \frac{gH}{2\omega}\frac{\cosh[k(h+z)]}{\cosh(kh)}\sin(kx-\omega t)\]
+        \item Onde:
+        \begin{itemize}
+            \item $H$ é a altura da onda
+            \item $\omega$ é a frequência angular
+            \item $k$ é o número de onda
+            \item $h$ é a profundidade
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Aspectos Computacionais}
+    \begin{itemize}
+        \item Na computação gráfica, a superfície da água é frequentemente representada como uma malha de vértices
+        \item A elevação da superfície $\eta(x,t)$ é dada por:
+        \[\eta(x,t) = \frac{H}{2}\cos(kx-\omega t)\]
+        \item A relação de dispersão conecta frequência e número de onda:
+        \[\omega^2 = gk\tanh(kh)\]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Técnicas de Renderização}
+    \begin{itemize}
+        \item Métodos de renderização em tempo real:
+        \begin{itemize}
+            \item Normal mapping para detalhes da superfície
+            \item Fresnel effect para reflexão/refração
+            \item Caustics para efeitos de luz subaquática
+        \end{itemize}
+        \item A velocidade das partículas é dada por:
+        \[\vec{v} = \nabla\phi = \begin{pmatrix}
+            \frac{\partial \phi}{\partial x} \\
+            \frac{\partial \phi}{\partial z}
+        \end{pmatrix}\]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Otimizações e Performance}
+    \begin{itemize}
+        \item Técnicas de Level of Detail (LOD):
+        \begin{itemize}
+            \item Tessellation adaptativa baseada na distância da câmera
+            \item Redução de vértices em áreas distantes
+        \end{itemize}
+        \item Fast Fourier Transform (FFT) para síntese de ondas:
+        \[\eta(x,y,t) = \sum_{i=1}^N \sum_{j=1}^N A_{ij}\cos(\vec{k_{ij}}\cdot\vec{x} - \omega_{ij}t + \phi_{ij})\]
     \end{itemize}
 \end{frame}
 

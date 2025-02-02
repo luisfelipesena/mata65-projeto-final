@@ -1,0 +1,42 @@
+=== ROTEIRO DE APRESENTAÇÃO (10 minutos) ===
+
+[SLIDE: Título - 30s]
+Luis: "Bom dia a todos. Hoje apresentaremos nosso trabalho sobre Simulação de Ondas e Oceano, uma área fascinante que une física, matemática e computação gráfica. Sou Luis Felipe, e junto comigo está Antoniel Magalhães."
+
+[SLIDE: Agenda - 15s]
+Antoniel: "Vamos cobrir os fundamentos teóricos das ondas oceânicas e como implementamos sua simulação usando técnicas modernas de computação gráfica."
+
+[SLIDE: Introdução - 45s]
+Luis: "A simulação de ondas e oceano é um campo multidisciplinar essencial. Suas aplicações vão desde jogos e animações até estudos ambientais e previsões meteorológicas. O desafio está em criar representações realistas que sejam computacionalmente eficientes."
+
+[SLIDE: Teoria Linear - 1min]
+Antoniel: "A base de nossa implementação é a Teoria Linear de Ondas, desenvolvida por Airy em 1845. Embora seja uma simplificação do fenômeno real, ela nos fornece uma base matemática sólida para criar simulações convincentes. Esta teoria é especialmente útil para ondas em águas profundas e condições normais de mar."
+
+[SLIDE: Assumptions - 1min]
+Luis: "Para implementar esta teoria, trabalhamos com algumas premissas importantes: consideramos o fluido como homogêneo e incompressível, ignoramos a tensão superficial e assumimos um fundo plano. Estas simplificações nos permitem focar nos aspectos mais relevantes para a visualização, mantendo a simulação tratável computacionalmente."
+
+[SLIDE: Equação de Laplace - 1min 30s]
+Antoniel: "O coração matemático de nossa simulação é a equação de Laplace. Esta equação diferencial, junto com suas condições de contorno, descreve completamente o movimento das ondas em nossa simulação. As condições de contorno são especialmente importantes pois garantem que a superfície da água se comporte de maneira física e realista."
+
+[SLIDE: Solução da Equação de Laplace - 1min]
+Luis: "A solução desta equação nos dá o potencial de velocidade, que é fundamental para calcular o movimento da água. Os parâmetros H, ω, k e h nos permitem controlar diferentes aspectos das ondas, como altura, frequência e comportamento em diferentes profundidades."
+
+[SLIDE: Aspectos Computacionais - 1min]
+Antoniel: "Na implementação prática, representamos a superfície da água como uma malha de vértices. A elevação de cada ponto é calculada usando a equação que vocês veem na tela. A relação de dispersão nos ajuda a manter o comportamento físico correto das ondas em diferentes frequências."
+
+[SLIDE: Técnicas de Renderização - 1min 30s]
+Luis: "Para criar uma visualização convincente, implementamos várias técnicas de renderização. O normal mapping adiciona detalhes à superfície, o efeito Fresnel simula reflexões realistas, e os caustics reproduzem os padrões de luz característicos de ambientes subaquáticos. O cálculo da velocidade das partículas é crucial para animar elementos como espuma e partículas de água."
+
+[SLIDE: Otimizações e Performance - 1min]
+Antoniel: "A eficiência computacional é crucial em simulações em tempo real. Utilizamos LOD - Level of Detail - para otimizar o processamento, reduzindo o número de vértices em áreas distantes da câmera. A síntese de ondas via FFT nos permite gerar padrões complexos de ondas de maneira eficiente."
+
+[SLIDE: Referências - 30s]
+Luis: "Isso conclui nossa apresentação. Agradecemos a atenção de todos e estamos abertos a perguntas sobre qualquer aspecto da implementação."
+
+=== NOTAS IMPORTANTES PARA OS APRESENTADORES ===
+
+- Mantenham contato visual com a audiência
+- Usem as equações para ilustrar pontos específicos, não as leiam palavra por palavra
+- Estejam preparados para perguntas sobre aspectos técnicos da implementação
+- Pratiquem as transições entre os slides para manter o fluxo suave
+- Respeitem o tempo de cada seção para manter a apresentação dentro dos 10 minutos 
