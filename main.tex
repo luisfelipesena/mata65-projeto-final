@@ -49,56 +49,39 @@
 \begin{frame}{Introdução}
     \begin{itemize}
         \item A simulação de ondas e oceano é uma área de estudo que combina física, matemática e computação para modelar o comportamento das ondas no mar.
-        \item Este campo é crucial para aplicações em engenharia costeira, previsão do tempo e estudos ambientais.
+        \item Este campo é crucial para:
+        \begin{itemize}
+            \item Jogos e aplicações interativas
+            \item Efeitos visuais em filmes e animações
+            \item Visualização científica
+            \item Simuladores de treinamento marítimo
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
 %=================================================
-\section{Teoria Linear ou Teoria de Onda de Pequena Amplitude}
+\section{Fundamentos Físicos}
 %=================================================
-\begin{frame}{Teoria Linear ou Teoria de Onda de Pequena Amplitude}
+\begin{frame}{Fundamentos da Teoria Linear}
     \begin{itemize}
-        \item A abordagem mais elementar da teoria de ondas superficiais de gravidade é conhecida como teoria linear ou teoria de pequena amplitude.
-        \item Desenvolvida por Airy em 1845, esta teoria considera em seus cálculos o caso mais simples da propagação do campo de ondas na ausência de qualquer forçante.
-        \item Apesar das simplificações impostas, esta teoria tem uma extensa gama de aplicações \cite{meirelles2007modelagem}.
+        \item Baseada na Teoria Linear de Ondas (Airy, 1845)
+        \item Simplificações importantes para computação gráfica:
+        \begin{itemize}
+            \item Fluido homogêneo e incompressível
+            \item Tensão superficial desprezada
+            \item Fundo plano e horizontal
+        \end{itemize}
+        \item Estas simplificações permitem implementações eficientes mantendo realismo visual \cite{meirelles2007modelagem}
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Pressupostos da Teoria Linear}
     \begin{itemize}
-        \item A teoria linear assume que: o fluido é homogêneo, incompressível (densidade constante) e irrotacional, permitindo a existência do potencial de velocidade.
+        \item A teoria linear assume que: o fluido é homogêneo, incompressível (densidade constante) e irrotacional.
         \item A tensão superficial é desprezada.
         \item A pressão na superfície livre é uniforme e constante.
         \item O fluido é invíscido.
         \item O fundo é um limite plano, horizontal, fixo e impermeável.
-        \item A amplitude da onda é constante e pequena em relação ao comprimento e à profundidade.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Equação de Laplace}
-    \begin{itemize}
-        \item A equação de Laplace para o potencial de velocidade $\phi(x,z,t)$ em duas dimensões é:
-        \[\nabla^2\phi = \frac{\partial^2\phi}{\partial x^2} + \frac{\partial^2\phi}{\partial z^2} = 0\]
-        \item As condições de contorno são:
-        \begin{itemize}
-            \item Cinemática da superfície livre: $\frac{\partial \eta}{\partial t} = \frac{\partial \phi}{\partial z}$ em $z = \eta(x,t)$
-            \item Dinâmica da superfície livre: $\frac{\partial \phi}{\partial t} + g\eta = 0$ em $z = \eta(x,t)$
-            \item Condição de fundo: $\frac{\partial \phi}{\partial z} = 0$ em $z = -h$
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Solução da Equação de Laplace}
-    \begin{itemize}
-        \item A solução para o potencial de velocidade é:
-        \[\phi(x,z,t) = \frac{gH}{2\omega}\frac{\cosh[k(h+z)]}{\cosh(kh)}\sin(kx-\omega t)\]
-        \item Onde:
-        \begin{itemize}
-            \item $H$ é a altura da onda
-            \item $\omega$ é a frequência angular
-            \item $k$ é o número de onda
-            \item $h$ é a profundidade
-        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -128,15 +111,20 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Otimizações e Performance}
+\begin{frame}{Técnicas de Otimização}
     \begin{itemize}
-        \item Técnicas de Level of Detail (LOD):
+        \item Level of Detail (LOD):
         \begin{itemize}
-            \item Tessellation adaptativa baseada na distância da câmera
+            \item Malha adaptativa baseada na distância
             \item Redução de vértices em áreas distantes
         \end{itemize}
-        \item Fast Fourier Transform (FFT) para síntese de ondas:
-        \[\eta(x,y,t) = \sum_{i=1}^N \sum_{j=1}^N A_{ij}\cos(\vec{k_{ij}}\cdot\vec{x} - \omega_{ij}t + \phi_{ij})\]
+        \item Otimizações de renderização:
+        \begin{itemize}
+            \item Frustum culling
+            \item Vertex buffer optimization
+            \item Shader optimizations
+        \end{itemize}
+        \item Performance em tempo real \cite{wavesimulator2024}
     \end{itemize}
 \end{frame}
 
@@ -160,59 +148,107 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Implementação em JavaScript}
+%=================================================
+\section{Implementação em Three.js}
+%=================================================
+\begin{frame}{Simulação em Three.js}
     \begin{itemize}
-        \item Exemplo simplificado de implementação:
+        \item Three.js: biblioteca JavaScript para computação gráfica 3D \cite{threejs2024}
+        \item Componentes principais:
+        \begin{itemize}
+            \item Geometria: PlaneGeometry para superfície da água
+            \item Material: MeshPhongMaterial para reflexões realistas
+            \item Iluminação: Combinação de luzes direcionais e ambiente
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Demonstração da Simulação}
+    \begin{center}
+        \includegraphics[height=0.35\textheight]{imgs/wave.png}
+    \end{center}
+    
+    \begin{itemize}
+        \item Simulação de ondas em tempo real usando Three.js
+        \item Demonstração completa: \href{https://github.com/alephoverflow/WaveSimulator}{GitHub}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Modelo de Propagação de Ondas}
+    \begin{itemize}
+        \item Modelo baseado em sistema de molas para simulação de ondas:
     \end{itemize}
     \begin{verbatim}
-class OceanWaveSimulator {
-    constructor(width, height, gridSize) {
-        this.width = width;
-        this.height = height;
-        this.gridSize = gridSize;
-        this.vertices = new Float32Array(gridSize * gridSize * 3);
-        this.time = 0;
-    }
-
-    updateWaveSurface() {
-        const g = 9.81;  // gravity
-        const k = 2;     // wave number
-        const w = Math.sqrt(g * k);  // angular frequency
+class PropagationSpringModel {
+    constructor(rows, columns) {
+        this.heightField = new Float32Array(rows * columns);
+        this.velocityField = new Float32Array(rows * columns);
         
-        for(let x = 0; x < this.gridSize; x++) {
-            for(let z = 0; z < this.gridSize; z++) {
-                const idx = (x + z * this.gridSize) * 3;
-                const xPos = (x / this.gridSize) * this.width;
-                const zPos = (z / this.gridSize) * this.height;
-                
-                // Gerstner wave implementation
-                this.vertices[idx] = xPos - 
-                    (k * this.amplitude * 
-                     Math.sin(k * xPos - w * this.time));
-                     
-                this.vertices[idx + 1] = 
-                    this.amplitude * 
-                    Math.cos(k * xPos - w * this.time);
-                    
-                this.vertices[idx + 2] = zPos;
-            }
-        }
-        
-        this.time += 0.016;  // ~60fps
-    }
-
-    calculateNormals() {
-        // Normal calculation for lighting
-        const normal = new Vector3();
-        const dx = this.amplitude * k * 
-            Math.cos(k * x - w * this.time);
-        const dy = -this.amplitude * 
-            Math.sin(k * x - w * this.time);
-        normal.set(-dx, 1, -dy).normalize();
-        return normal;
+        // Constantes físicas da simulação
+        this.springConstant = 0.008;  // Elasticidade
+        this.damping = 0.025;         // Amortecimento
+        this.propagationSpeed = 5.0;   // Velocidade
     }
 }
     \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Renderização com Three.js}
+    \begin{itemize}
+        \item Configuração básica da cena 3D:
+    \end{itemize}
+    \begin{verbatim}
+class OceanSimulation {
+    constructor() {
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(45);
+        
+        // Material realista para água
+        this.waterMaterial = new THREE.MeshPhongMaterial({
+            color: 0x006994,
+            specular: 0x111111,
+            shininess: 40
+        });
+    }
+}
+    \end{verbatim}
+\end{frame}
+
+%=================================================
+\section{Técnicas Avançadas de Simulação}
+%=================================================
+\begin{frame}{Survey: Estado da Arte em Simulação de Oceanos}
+    \begin{itemize}
+        \item Survey de técnicas de simulação \cite{darles2011survey}:
+        \begin{itemize}
+            \item Métodos baseados em física
+            \item Métodos de domínio espacial
+            \item Técnicas híbridas para melhor performance
+        \end{itemize}
+        \item Desafios identificados no survey:
+        \begin{itemize}
+            \item Equilíbrio entre realismo e performance
+            \item Simulação de fenômenos complexos
+            \item Integração com sistemas em tempo real
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Survey: Técnicas Avançadas}
+    \begin{itemize}
+        \item Método Euleriano baseado em física \cite{thurey2007realtime}:
+        \begin{itemize}
+            \item Simulação em tempo real de águas rasas
+            \item Modelagem realista de ondas quebrando
+            \item Otimizado para GPU
+        \end{itemize}
+        \item Técnicas modernas de GPU \cite{bonaventura2018terrain}:
+        \begin{itemize}
+            \item Tesselação dinâmica da superfície
+            \item Nível de detalhe adaptativo
+            \item Otimização de geometria em tempo real
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 %=================================================
