@@ -109,27 +109,71 @@
 %=================================================
 \begin{frame}{Survey: Estado da Arte em Simulação de Oceanos}
     \begin{itemize}
-        \item Survey de técnicas de simulação:
+        \item \textbf{Simulação de Águas Profundas:}
         \begin{itemize}
-            \item Métodos baseados em funções periódicas (domínio espacial)
-            \item Métodos baseados em espectro de ondas (domínio de Fourier)
-            \item Métodos Eulerianos baseados nas equações de Navier-Stokes (NSE)
-            \item Métodos Lagrangianos, em particular Smoothed Particle Hydrodynamics (SPH)
-            \item Métodos híbrido
+            \item Abordagens \textbf{Espaciais}: funções periódicas
+            \item Abordagens \textbf{Espectrais}: transformada de Fourier a partir de espectros de ondas
+            \item Abordagens \textbf{Híbridas}: combinação dos métodos espaciais e espectrais
+        \end{itemize}
+        \item \textbf{Simulação de Águas Rasas:}
+        \begin{itemize}
+            \item Métodos \textbf{Eulerianos}: baseados nas equações de Navier-Stokes (NSE)
+            \item Métodos \textbf{Lagrangianos}: por exemplo, Smoothed Particle Hydrodynamics (SPH)
+            \item Métodos \textbf{Híbridos}: integração de abordagens Eulerianas e Lagrangianas
         \end{itemize}
     \end{itemize}
 \end{frame}
-\begin{frame}{Terrain and water rendering with hardware tessellation}
+\begin{frame}{Terrain and Water Rendering with Hardware Tessellation (2010)}
     \begin{itemize}
-        \item \textbf{Tesselação na GPU:} Gera geometria detalhada na GPU, reduzindo a necessidade de enviar malhas complexas da CPU.
-        \item \textbf{Ondas em Tempo Real:} Simula o movimento das ondas em tempo real combinando múltiplas ondas com diferentes comprimentos de onda, amplitudes e direções.
-        \item \textbf{Fator de Tesselação Fracionária:} Permite transições mais suaves na geometria das ondas.
-        \item \textbf{Cálculo de Normais:} Normais dos vértices são calculadas usando derivadas parciais da função paramétrica que define a superfície da água.
-        \item \textbf{Texturização:} Combina reflexões de Fresnel para cores realistas e mapeamento de relevo para pequenas ondas na superfície.
-        \item \textbf{Correção de Ângulo de Câmera:} Garante que os triângulos tessalados apareçam do mesmo tamanho na tela.
-        \item \textbf{Interface Gráfica:} Permite que os usuários ajustem parâmetros como distâncias e fatores mínimos e máximos de tesselação.
+      \item \textbf{O que é Tesselação?}
+        \begin{itemize}
+          \item Técnica que subdivide a geometria na GPU em tempo real
+          \item Gera níveis de detalhe adaptativos sem sobrecarregar a CPU
+        \end{itemize}
+      \item \textbf{Aplicações:}
+        \begin{itemize}
+          \item \textbf{Terrenos:} Renderização de superfícies extensas com detalhes variáveis
+          \item \textbf{Oceanos:} Simulação de ondas com movimento físico e reflexões Fresnel
+        \end{itemize}
+      \item \textbf{Relação com o Survey:}
+        \begin{itemize}
+          \item Complementa métodos de geração de ondas (funções periódicas, Fourier)
+          \item Utiliza tesselação para gerar geometrias detalhadas de ondas
+        \end{itemize}
+      \item \textbf{Resultados:}
+        \begin{itemize}
+          \item Melhor desempenho e realismo em cenas complexas
+        \end{itemize}
     \end{itemize}
-\end{frame}
+  \end{frame}
+
+  \begin{frame}{Função Procedural para Geração de Ondas}
+    \footnotesize
+        \begin{itemize}
+            \item \textbf{Objetivo:} Criar uma superfície ondulada realista aplicando deslocamentos a cada vértice.
+            \item \textbf{Fórmula do Deslocamento:}
+                \[
+                s(p, a, \lambda, k, t) = a \begin{bmatrix} -\cos(\phi) \\ \sin(\phi) \end{bmatrix} \quad \text{com} \quad \phi = \frac{2\pi}{\lambda}(p\cdot k + v\,t)
+                \]
+            \item \textbf{Combinação de Ondas:}
+                \[
+                p_\Sigma = p + \sum_{i=0}^{n} s(p, a_i, \lambda_i, k_i, t)
+                \]
+            \item \textbf{Onde:}
+                \begin{itemize}
+                    \item \textbf{\(p\)} é a posição original do vértice, \textbf{\(a\)} é a amplitude da onda, \textbf{\(\lambda\)} é o comprimento de onda, \textbf{\(k\)} é a direção da onda (normalizada), \textbf{\(v\)} é a velocidade da onda e \textbf{\(t\)} é o tempo.
+                \end{itemize}
+            \item \textbf{Processo:} 
+                \begin{itemize}
+                    \item Aplicada a cada vértice da malha subdividida pela tesselação.
+                    \item Executada no \textbf{Domain Shader}, onde os novos vértices são posicionados.
+                \end{itemize}
+            \item \textbf{Relação com o Survey:} 
+                \begin{itemize}
+                    \item Aqui, a tesselação gera dinamicamente os vértices, e a função procedural os transforma em uma geometria ondulada.
+                \end{itemize}
+        \end{itemize}
+    \end{frame}
 
 \begin{frame}{Demonstração}
     \begin{columns}
@@ -144,38 +188,11 @@
 \end{frame}
 
 
-%=================================================
-\section{Simulação do Empinamento}
-%=================================================
-\begin{frame}{Simulação do Empinamento}
-    \begin{itemize}
-        \item O empinamento das ondas é um fenômeno importante na dinâmica oceânica.
-        \item A simulação deste processo ajuda a entender como as ondas interagem com estruturas costeiras e como a energia das ondas é dissipada.
-    \end{itemize}
-\end{frame}
-
 \begin{frame}{Real-time Breaking Waves for Shallow Water Simulations}
         \begin{itemize}
         \item \textbf{Objetivo:} Aprimorar simulações de águas rasas com o efeito de ondas que quebram, utilizando um modelo de campo de altura eficiente para aplicações em tempo real.
         \item \textbf{Desafio:} Simulações 3D de fluidos são computacionalmente caras para aplicações interativas.
         \item \textbf{Solução:} Combinação de simulação de campo de altura (2D) com partículas para representar ondas que quebram.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Simulação de Águas Rasas (Shallow Water - SW)}
-    \begin{itemize}
-        \item Redução de um problema 3D para uma representação 2D de campo de altura.
-        \item A velocidade do fluido não varia significativamente ao longo do eixo z.
-        \item As únicas forças que impulsionam o fluido são pressão e gravidade.
-        \item Usa as equações de Euler, negligenciando a viscosidade.
-        \item As equações simplificadas de águas rasas são:
-        \begin{align*}
-            H_t &= -u \cdot \nabla H - H(u_x + v_y) \\
-            u_t &= -u \cdot \nabla u - gh_x \\
-            v_t &= -u \cdot \nabla v - gh_y
-        \end{align*}
-        \item Onde $H$ é a altura total da água e do terreno, $u$ é a velocidade horizontal do fluido, e $g$ é a força da gravidade.
-        \item Vantagens: Fornece um campo de velocidade completo para a superfície e pode ser facilmente estendida com várias condições de contorno.
     \end{itemize}
 \end{frame}
 
@@ -204,7 +221,10 @@
 
 \begin{frame}{Resultados e Desempenho}
     \begin{itemize}
-        \item Simulações em tempo real de ondas quebrando com taxas de quadros de 40 a 75 fps em hardware comum.
+        \item Simulações em tempo real de ondas quebrando com taxas de quadros de 40 a 75 fps em hardware comum:
+              \begin{itemize}
+                  \item Intel Core 2 Duo 2.13 GHz e Nvidia Geforce 7950 GPU.
+              \end{itemize}
         \item O modelo permite a criação de ondas em diversas configurações e condições.
         \item A simulação de fluidos representa cerca de 80\% do tempo de execução, enquanto a renderização e o overhead do motor gráfico consomem os 20\% restantes.
         \item Aproximadamente metade do tempo de simulação é gasto na simulação de águas rasas, e um quarto é gasto no algoritmo de simulação de ondas.

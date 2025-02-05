@@ -3,5 +3,4 @@
 \beamer@sectionintoc {2}{Imagens dos Artigos de Referência}{4}{0}{2}
 \beamer@sectionintoc {3}{Computação Atual de Ondas}{5}{0}{3}
 \beamer@sectionintoc {4}{Técnicas Avançadas de Simulação}{7}{0}{4}
-\beamer@sectionintoc {5}{Simulação do Empinamento}{10}{0}{5}
-\beamer@sectionintoc {6}{Referências}{16}{0}{6}
+\beamer@sectionintoc {5}{Referências}{15}{0}{5}
