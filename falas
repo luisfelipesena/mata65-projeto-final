@@ -1,0 +1,147 @@
+Aqui está o roteiro da apresentação, com falas divididas entre os dois apresentadores para garantir fluidez e coerência ao longo dos 10 minutos.
+
+
+Slide 1: Título
+Boa tarde a todos! Somos Antoniel Magalhães e Luis Felipe, e hoje vamos apresentar nosso trabalho sobre Simulação de Ondas e Oceano. Esse tema é fundamental em diversas áreas, como jogos, efeitos visuais e simulação científica. Vamos explorar os principais conceitos, técnicas e avanços nessa área.
+
+
+Slide 2: Agenda
+Essa é a estrutura da nossa apresentação. Começaremos com uma introdução ao tema, seguido por um panorama das abordagens atuais. Também veremos técnicas avançadas de simulação, incluindo métodos híbridos e tesselação. Por fim, discutiremos a simulação de ondas quebrando e concluiremos com os resultados obtidos.
+
+As fontes que utilizamos foram 3 artigos:
+- A survey of ocean simulation and rendering techniques in computer graphics (2011)
+- Terrain and Ocean Rendering with Hardware Tessellation (2010)
+- Real-time breaking waves for shallow water simulations (2004)
+
+São artigos datados por 2011, 2004 e 2010 respectivamente
+
+Slide 3: Introdução
+Bom agora propriamente introduzindo o tema, a simulação de ondas combina física, matemática e computação para modelar a interação entre o vento, a água e as forças gravitacionais. Como a gente disse, essa tecnologia tem aplicações diretas em jogos, filmes, visualização científica e simuladores marítimos. O realismo da água virtual impacta diretamente a imersão dessas experiências.
+
+Slide 4: Imagens dos Artigos de Referência
+a fim de dar umma perspectiva geral e pra ilustrar aqui algumas imagens que foram extraídas dos artigos de referência. Podemos ver a complexidade das simulações e os diferentes níveis de detalhe. E vale lembrar que pra a gente agora pode não parecer uma imagem super realista ou muito rica em detalhes, mas essa simulação em si é de 2004, então pra época era bem impressionante.
+
+
+Slide 5: Computação Atual de Ondas
+O estado atual da simulação de ondas tem evoluído bastante. Jogos como ‘Sea of Thieves’ trazem ondas dinâmicas que reagem ao ambiente e às condições climáticas.
+“Além dos jogos, ferramentas de desenvolvimento como o ‘River Editor’ permitem criar simulações detalhadas para aplicações diversas.” A gente pessou, po com tanto avanço vamo fazer uma implementação que possívelmente vai ficar mais realista que os artigos iniciais ...
+
+
+Slide 6: Demonstração da Simulação
+a gente descobriu que era um pouco mais difícil do que a gente imaginava, e nossos exemplos não impressionaram muito kkkkkk, então fica aí só de nota de que mesmo com os os avanços chegar a resultados satisfatórios ainda sim demanda um certo trabalho
+
+A seguir vamos falar um pouco mais sobre os métodos para a simulação de ondas e oceanos, mas na nossa implementação a gente utilizou uma abordagem com ondas paramétricas, nesse método são definidas várias funções de onda que descrevem a forma da onda e a sua evolução no tempo, e a combinação dessas várias funções gera um comportamento mais natural.
+
+
+Slide 7: Survey - Estado da Arte em Simulação de Oceanos
+Vamos agora ver como o survey de 2011 categoriza os métodos de simulação de ondas.
+
+Primeiro, o artigo divide os métodos em duas grandes categorias: águas profundas e águas rasas. Essa separação é fundamental porque o comportamento do oceano muda bastante conforme a profundidade.
+
+Em águas profundas, onde o fundo do mar tem pouca influência e as ondas são mais regulares, temos duas abordagens principais:
+	•	Funções periódicas: aqui a superfície do mar é simulada como uma soma de ondas simples, como senos, para reproduzir o movimento do oceano.
+	•	Abordagens espectrais: essa técnica é como decompor uma música em suas notas individuais. Em vez de trabalhar com a onda como um todo, ela é dividida em componentes simples, cada uma com sua frequência e intensidade, o que nos permite capturar a complexidade da onda de forma detalhada.
+
+Já em águas rasas, perto da costa, o cenário fica mais complexo por causa da interação das ondas com o fundo do mar – o que resulta, por exemplo, na quebra das ondas. Para simular essa dinâmica mais complexa, são usados métodos mais robustos, como:
+	•	Métodos Eulerianos: que resolvem as equações de Navier-Stokes em uma grade fixa para modelar a dinâmica dos fluidos.
+    •	Métodos Eulerianos (Navier-Stokes):
+Nesse caso, dividimos o espaço em uma grade fixa (como se fosse uma malha) e, em cada célula dessa malha, calculamos como o fluido se move. Para isso, usamos as equações de Navier-Stokes, que são um conjunto de leis que descrevem o movimento dos fluidos 
+	•	Métodos Lagrangianos: como o Smoothed Particle Hydrodynamics (SPH), que representam o fluido por meio de partículas que se movem.
+    •	 Aqui, em vez de usar uma grade fixa, o fluido é representado por um conjunto de partículas que se movem livremente. Cada partícula carrega informações como massa, velocidade e densidade. A ideia é que, ao interagir com partículas próximas, essas propriedades são suavizadas para aproximar o comportamento contínuo do fluido. Essa abordagem é muito útil para simular situações com grandes deformações, como a quebra de ondas, onde o fluido não se comporta de forma uniforme.
+	•	Métodos híbridos: que combinam os dois anteriores para aproveitar o melhor de cada abordagem, alcançando maior realismo e eficiência.
+
+Essa divisão é importante porque nos ajuda a escolher a técnica certa para cada situação: em águas profundas, métodos mais simples podem ser suficientes, enquanto em águas rasas precisamos de abordagens que capturem os efeitos complexos da interação com o fundo
+
+Slide 8: Terrain and Water Rendering com Tesselação
+Neste trabalho de 2010, o autor investiga a tesselação de hardware – a tesselação é uma técnica que foi introduzida no DirectX 11 que permite subdividir a geometria diretamente na GPU em tempo real. Basicamente, essa técnica gera níveis de detalhe adaptativos: as áreas próximas à câmera são renderizadas com alta resolução, enquanto as regiões distantes usam menos polígonos. 
+
+O trabalho apresenta a aplicação da tesselação para oceanos, onde a tesselação é empregada para simular ondas com movimentos fisicamente baseados. Em termos práticos, a técnica permite que uma malha base simples seja subdividida dinamicamente, e então se aplique uma função procedural de deslocamento — similar aos métodos clássicos que vimos no survey, como as funções periódicas e as transformadas de Fourier — para gerar a geometria das ondas de forma realista e eficiente.
+
+Ou seja, enquanto o survey mostra métodos tradicionais de geração de ondas, este trabalho complementa essa abordagem utilizando a tesselação de hardware para criar, em tempo real, uma malha detalhada onde as funções procedurais de onda são aplicadas aos novos vértices. O resultado é uma renderização mais realista e com desempenho aprimorado, especialmente em cenários complexos
+
+Slide 8.1 Função para geração das ondas
+
+Aqui está uma sugestão de fala para o slide, explicando as fórmulas e como interpretá-las:
+
+“Neste slide, vamos ver como a função procedural gera a superfície ondulada do oceano. Basicamente, queremos transformar uma malha simples – que é subdividida dinamicamente via tesselação – em uma superfície que se mova como as ondas do mar.
+
+A primeira fórmula que vemos é:
+
+Essa função usa as funções cosseno e seno para calcular o deslocamento: o cosseno fornece o componente “horizontal” (ou negativo, no caso, para ajustar a direção) e o seno fornece o componente “vertical” – juntos, eles formam uma pequena “onda” aplicada ao vértice.
+
+Em seguida, para criar uma superfície mais realista, não usamos apenas uma onda, mas somamos os deslocamentos de várias ondas diferentes. Essa soma é dada por:
+
+Ou seja, para cada vértice, pegamos a posição original p e somamos os deslocamentos s calculados para várias ondas, cada uma com seus próprios parâmetros (\alphai, \lambdai, ki). Isso resulta na posição final p soma do vértice, criando uma geometria ondulada que se movimenta ao longo do tempo.
+
+Todo esse cálculo é feito para cada vértice da malha que foi gerada pela tesselação – essa etapa ocorre no Domain Shader, onde os novos vértices são posicionados com base nessas fórmulas.
+
+Em resumo, a função procedural calcula, para cada vértice, um deslocamento baseado em funções senoidais – que dependem de parâmetros como amplitude, comprimento de onda, direção e tempo – e ao somarmos as contribuições de várias ondas, obtemos uma superfície ondulada que simula o movimento do mar.”
+
+
+
+Slide 9: Demonstração - Terrain and Water Rendering
+Antoniel:
+“Aqui temos exemplos de tesselação em ação, onde podemos perceber que nas partes mais distantes temos uma malha mais grossa, e nas partes mais próximas temos uma malha mais fina. Esse tipo de técnica melhora a qualidade da simulação sem comprometer o desempenho, sendo amplamente utilizada em jogos e simulações marítimas
+
+
+
+Slide 11: Real-time Breaking Waves for Shallow Water Simulations
+
+Simular ondas quebrando é desafiador porque as simulações 3D completas são muito custosas para aplicações interativas. Para resolver isso, o objetivo deste trabalho é aprimorar a simulação de águas rasas combinando um modelo de campo de altura com partículas.
+
+No modelo de campo de altura, representamos a superfície da água como uma função 2D, onde cada ponto em uma grade tem um valor  h(x,y,t)  que indica a altura da água naquele local. Isso reduz o problema de 3D para 2D, simplificando os cálculos e permitindo uma simulação eficiente em tempo real.
+
+A abordagem então utiliza essa base 2D para detectar frentes de onda íngremes e, a partir daí, gera partículas que formam ‘folhas’ de fluido para representar o rompimento das ondas. Assim, conseguimos criar uma simulação realista e dinâmica das ondas quebrando, sem sobrecarregar o sistema computacional
+
+
+Slide 13: Geração de Ondas Quebrando
+Antoniel:
+Neste slide, vamos entender como o método identifica e gera as ondas quebrando a partir de critérios matemáticos simples.
+
+Primeiro, para detectar uma região de onda potencialmente quebrante, usamos dois critérios:
+	1.	Critério de inclinação:
+Verificamos se a inclinação da altura do fluido é suficientemente acentuada. Isso é medido pelo valor absoluto do gradiente da altura,  |\nabla H(x)| , que deve ser maior que um limiar  t_H .
+	2.	Critério de oposição do fluxo:
+Checamos se a velocidade do fluido,  u(x) , se opõe à direção do gradiente da altura, ou seja, o produto escalar  \nabla H(x) \cdot u(x)  deve ser negativo.
+
+O limiar  t_H  é definido como
+
+t_H = p_H\, g\, \Delta t / \Delta x,
+
+onde  p_H  é um parâmetro ajustável,  g  é a gravidade,  \Delta t  é o intervalo de tempo da simulação e  \Delta x  é o espaçamento da grade. Essa fórmula garante que a detecção seja sensível à escala e à dinâmica do sistema.
+
+Depois de identificar os pontos que satisfazem esses critérios, o algoritmo constrói linhas conectadas ao longo da frente da onda. Essas linhas representam a borda onde a onda está prestes a quebrar.
+
+Em seguida, essas linhas são advectadas – isto é, movidas – usando a velocidade da onda e projetadas ao longo do gradiente de altura, garantindo que sigam a evolução do fluxo.
+
+Finalmente, a partir dessas linhas, são gerados patches de fluido: conjuntos de partículas conectadas que formam uma malha e representam visualmente o rompimento da onda. A velocidade dessas partículas é calculada com base na velocidade da linha da onda e na energia potencial associada, permitindo simular o movimento acelerado do fluido durante o rompimento.
+
+Em resumo, a combinação desses critérios e etapas permite detectar regiões onde a onda vai quebrar e, a partir daí, gerar uma representação dinâmica e realista desse fenômeno
+
+
+Slide 14: Demonstração - Ondas Quebrando
+Antoniel:
+“Nessas imagens podemos ver a aplicação desse modelo, onde as ondas se deformam e geram efeitos de espuma e dispersão.”
+Luis Felipe:
+“Esse tipo de simulação tem grande impacto visual e é amplamente usada em jogos e animações para um realismo aprimorado.”
+
+
+Slide 15: Resultados e Desempenho
+Antoniel:
+“As simulações atingiram taxas de 40 a 75 FPS em hardware comum, permitindo aplicações em tempo real.”
+Luis Felipe:
+“A maior parte do tempo de execução é gasto na simulação de fluidos, mas o modelo proposto equilibra precisão e desempenho de forma eficiente.”
+
+
+Slide 16: Referências
+Antoniel:
+“Aqui estão os artigos e fontes utilizados em nossa pesquisa. Esses trabalhos ajudaram a embasar nossa abordagem e implementação.”
+Luis Felipe:
+“Se alguém tiver interesse em aprofundar o estudo sobre simulação de ondas, essas referências são um ótimo ponto de partida.”
+Encerramento
+Antoniel:
+“Com isso, concluímos nossa apresentação. A simulação de ondas e oceanos continua sendo uma área ativa de pesquisa, com grande impacto na computação gráfica.”
+Luis Felipe:
+“Agradecemos a atenção de todos! Agora abrimos para perguntas.”
+Esse roteiro garante uma apresentação dinâmica e bem distribuída entre os dois apresentadores, respeitando o tempo estimado de 10 minutos.
+

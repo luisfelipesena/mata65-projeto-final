@@ -2,17 +2,21 @@
 
 \bibitem{bonaventura2018terrain}
 Xavier Bonaventura.
-\newblock {\em Terrain and Ocean Rendering with Hardware Tessellation}, pages 83--94.
+\newblock {\em Terrain and Ocean Rendering with Hardware Tessellation}, pages
+  83--94.
 \newblock AK Peters/CRC Press, 2018.
 
 \bibitem{darles2011survey}
-Emmanuelle Darles, Benoît Crespin, Djamchid Ghazanfarpour, and Jean-Christophe Gonzato.
-\newblock A survey of ocean simulation and rendering techniques in computer graphics.
+Emmanuelle Darles, Benoît Crespin, Djamchid Ghazanfarpour, and Jean-Christophe
+  Gonzato.
+\newblock A survey of ocean simulation and rendering techniques in computer
+  graphics.
 \newblock {\em Computer Graphics Forum}, 30(1):43--60, 2011.
 
 \bibitem{thurey2007realtime}
 Nils Thürey, Matthias Müller-Fischer, Simon Schirm, and Markus Gross.
 \newblock Real-time breaking waves for shallow water simulations.
-\newblock In {\em 15th Pacific Conference on Computer Graphics and Applications (PG'07)}, pages 39--46, 2007.
+\newblock In {\em 15th Pacific Conference on Computer Graphics and Applications
+  (PG'07)}, pages 39--46, 2007.
 
 \end{thebibliography}

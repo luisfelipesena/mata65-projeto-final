@@ -1,0 +1,19 @@
+{
+  "files.exclude": {
+    "falas.txt": true,
+    "main.aux": true,
+    "main.bbl": true,
+    "main.blg": true,
+    "main.fdb_latexmk": true,
+    "main.fls": true,
+    "main.nav": true,
+    "main.out": true,
+    "main.snm": true,
+    "main.toc": true,
+    "main.vrb": true
+  },
+  "workbench.colorCustomizations": {
+    "minimap.errorHighlight": "#ff0000",
+    "terminal.background": "#00000000"
+  }
+}
