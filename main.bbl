@@ -1,14 +1,5 @@
 \begin{thebibliography}{1}
 
-\bibitem{wavesimulator2024}
-AlephOverflow.
-\newblock Wavesimulator: Real-time ocean wave simulation using three.js, 2024.
-
-\bibitem{threejs2024}
-Three.js Authors.
-\newblock Three.js, 2024.
-\newblock JavaScript 3D Library.
-
 \bibitem{bonaventura2018terrain}
 Xavier Bonaventura.
 \newblock {\em Terrain and Ocean Rendering with Hardware Tessellation}, pages 83--94.
@@ -18,11 +9,6 @@ Xavier Bonaventura.
 Emmanuelle Darles, Benoît Crespin, Djamchid Ghazanfarpour, and Jean-Christophe Gonzato.
 \newblock A survey of ocean simulation and rendering techniques in computer graphics.
 \newblock {\em Computer Graphics Forum}, 30(1):43--60, 2011.
-
-\bibitem{meirelles2007modelagem}
-S.~Meirelles and N.~Violante-Carvalho.
-\newblock Modelagem computacional da propagação de ondas superficiais no oceano: um subsídio para a compreensão dos fenômenos ópticos.
-\newblock {\em Revista Brasileira de Ensino de Física}, 29(4):555--563, 2007.
 
 \bibitem{thurey2007realtime}
 Nils Thürey, Matthias Müller-Fischer, Simon Schirm, and Markus Gross.

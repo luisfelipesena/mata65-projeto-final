@@ -1,8 +1,7 @@
 \babel@toc {portuguese}{}\relax 
 \beamer@sectionintoc {1}{Introdução}{3}{0}{1}
-\beamer@sectionintoc {2}{Fundamentos Físicos}{4}{0}{2}
-\beamer@sectionintoc {3}{Simulação do Empinamento}{9}{0}{3}
-\beamer@sectionintoc {4}{Computação Gráfica na Simulação de Ondas}{10}{0}{4}
-\beamer@sectionintoc {5}{Implementação em Three.js}{11}{0}{5}
-\beamer@sectionintoc {6}{Técnicas Avançadas de Simulação}{15}{0}{6}
-\beamer@sectionintoc {7}{Referências}{17}{0}{7}
+\beamer@sectionintoc {2}{Imagens dos Artigos de Referência}{4}{0}{2}
+\beamer@sectionintoc {3}{Computação Atual de Ondas}{5}{0}{3}
+\beamer@sectionintoc {4}{Técnicas Avançadas de Simulação}{7}{0}{4}
+\beamer@sectionintoc {5}{Simulação do Empinamento}{10}{0}{5}
+\beamer@sectionintoc {6}{Referências}{16}{0}{6}

@@ -60,73 +60,89 @@
 \end{frame}
 
 %=================================================
-\section{Fundamentos Físicos}
+\section{Imagens dos Artigos de Referência}
 %=================================================
-\begin{frame}{Fundamentos da Teoria Linear}
+\begin{frame}{Imagens dos Artigos de Referência}
+    \begin{columns}
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/wave-artigo-1.png}
+        
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/wave-artigo-2.png}
+    \end{columns}
+\end{frame}
+
+
+%=================================================
+\section{Computação Atual de Ondas}
+%=================================================
+\begin{frame}{Computação Atual de Ondas}
+    \begin{columns}
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/sea-of-thieves.png}
+        
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/river-editor.png}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{Demonstração da Simulação}
+    \begin{columns}
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/wave.png}
+        
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/wave-2.jpeg}
+    \end{columns}
+\end{frame}
+
+
+%=================================================
+\section{Técnicas Avançadas de Simulação}
+%=================================================
+\begin{frame}{Survey: Estado da Arte em Simulação de Oceanos}
     \begin{itemize}
-        \item Baseada na Teoria Linear de Ondas (Airy, 1845)
-        \item Simplificações importantes para computação gráfica:
+        \item Survey de técnicas de simulação:
         \begin{itemize}
-            \item Fluido homogêneo e incompressível
-            \item Tensão superficial desprezada
-            \item Fundo plano e horizontal
+            \item Métodos baseados em funções periódicas (domínio espacial)
+            \item Métodos baseados em espectro de ondas (domínio de Fourier)
+            \item Métodos Eulerianos baseados nas equações de Navier-Stokes (NSE)
+            \item Métodos Lagrangianos, em particular Smoothed Particle Hydrodynamics (SPH)
+            \item Métodos híbrido
         \end{itemize}
-        \item Estas simplificações permitem implementações eficientes mantendo realismo visual \cite{meirelles2007modelagem}
+    \end{itemize}
+\end{frame}
+\begin{frame}{Terrain and water rendering with hardware tessellation}
+    \begin{itemize}
+        \item \textbf{Tesselação na GPU:} Gera geometria detalhada na GPU, reduzindo a necessidade de enviar malhas complexas da CPU.
+        \item \textbf{Ondas em Tempo Real:} Simula o movimento das ondas em tempo real combinando múltiplas ondas com diferentes comprimentos de onda, amplitudes e direções.
+        \item \textbf{Fator de Tesselação Fracionária:} Permite transições mais suaves na geometria das ondas.
+        \item \textbf{Cálculo de Normais:} Normais dos vértices são calculadas usando derivadas parciais da função paramétrica que define a superfície da água.
+        \item \textbf{Texturização:} Combina reflexões de Fresnel para cores realistas e mapeamento de relevo para pequenas ondas na superfície.
+        \item \textbf{Correção de Ângulo de Câmera:} Garante que os triângulos tessalados apareçam do mesmo tamanho na tela.
+        \item \textbf{Interface Gráfica:} Permite que os usuários ajustem parâmetros como distâncias e fatores mínimos e máximos de tesselação.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Pressupostos da Teoria Linear}
-    \begin{itemize}
-        \item A teoria linear assume que: o fluido é homogêneo, incompressível (densidade constante) e irrotacional.
-        \item A tensão superficial é desprezada.
-        \item A pressão na superfície livre é uniforme e constante.
-        \item O fluido é invíscido.
-        \item O fundo é um limite plano, horizontal, fixo e impermeável.
-    \end{itemize}
+\begin{frame}{Demonstração}
+    \begin{columns}
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/terrain-and-water.png}
+        
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/terrain-and-water-2.png}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Aspectos Computacionais}
-    \begin{itemize}
-        \item Na computação gráfica, a superfície da água é frequentemente representada como uma malha de vértices
-        \item A elevação da superfície $\eta(x,t)$ é dada por:
-        \[\eta(x,t) = \frac{H}{2}\cos(kx-\omega t)\]
-        \item A relação de dispersão conecta frequência e número de onda:
-        \[\omega^2 = gk\tanh(kh)\]
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Técnicas de Renderização}
-    \begin{itemize}
-        \item Métodos de renderização em tempo real:
-        \begin{itemize}
-            \item Normal mapping para detalhes da superfície
-            \item Fresnel effect para reflexão/refração
-            \item Caustics para efeitos de luz subaquática
-        \end{itemize}
-        \item A velocidade das partículas é dada por:
-        \[\vec{v} = \nabla\phi = \begin{pmatrix}
-            \frac{\partial \phi}{\partial x} \\
-            \frac{\partial \phi}{\partial z}
-        \end{pmatrix}\]
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Técnicas de Otimização}
-    \begin{itemize}
-        \item Level of Detail (LOD):
-        \begin{itemize}
-            \item Malha adaptativa baseada na distância
-            \item Redução de vértices em áreas distantes
-        \end{itemize}
-        \item Otimizações de renderização:
-        \begin{itemize}
-            \item Frustum culling
-            \item Vertex buffer optimization
-            \item Shader optimizations
-        \end{itemize}
-        \item Performance em tempo real \cite{wavesimulator2024}
-    \end{itemize}
-\end{frame}
 
 %=================================================
 \section{Simulação do Empinamento}
@@ -138,115 +154,60 @@
     \end{itemize}
 \end{frame}
 
-%=================================================
-\section{Computação Gráfica na Simulação de Ondas}
-%=================================================
-\begin{frame}{Computação Gráfica na Simulação de Ondas}
-    \begin{itemize}
-        \item A computação gráfica desempenha um papel vital na visualização das simulações de ondas.
-        \item Técnicas avançadas permitem a criação de modelos visuais realistas que ajudam na análise e interpretação dos dados simulados.
-    \end{itemize}
-\end{frame}
-
-%=================================================
-\section{Implementação em Three.js}
-%=================================================
-\begin{frame}{Simulação em Three.js}
-    \begin{itemize}
-        \item Three.js: biblioteca JavaScript para computação gráfica 3D \cite{threejs2024}
-        \item Componentes principais:
+\begin{frame}{Real-time Breaking Waves for Shallow Water Simulations}
         \begin{itemize}
-            \item Geometria: PlaneGeometry para superfície da água
-            \item Material: MeshPhongMaterial para reflexões realistas
-            \item Iluminação: Combinação de luzes direcionais e ambiente
-        \end{itemize}
+        \item \textbf{Objetivo:} Aprimorar simulações de águas rasas com o efeito de ondas que quebram, utilizando um modelo de campo de altura eficiente para aplicações em tempo real.
+        \item \textbf{Desafio:} Simulações 3D de fluidos são computacionalmente caras para aplicações interativas.
+        \item \textbf{Solução:} Combinação de simulação de campo de altura (2D) com partículas para representar ondas que quebram.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Demonstração da Simulação}
-    \begin{center}
-        \includegraphics[height=0.35\textheight]{imgs/wave.png}
-    \end{center}
-    
+\begin{frame}{Simulação de Águas Rasas (Shallow Water - SW)}
     \begin{itemize}
-        \item Simulação de ondas em tempo real usando Three.js feita por nós
+        \item Redução de um problema 3D para uma representação 2D de campo de altura.
+        \item A velocidade do fluido não varia significativamente ao longo do eixo z.
+        \item As únicas forças que impulsionam o fluido são pressão e gravidade.
+        \item Usa as equações de Euler, negligenciando a viscosidade.
+        \item As equações simplificadas de águas rasas são:
+        \begin{align*}
+            H_t &= -u \cdot \nabla H - H(u_x + v_y) \\
+            u_t &= -u \cdot \nabla u - gh_x \\
+            v_t &= -u \cdot \nabla v - gh_y
+        \end{align*}
+        \item Onde $H$ é a altura total da água e do terreno, $u$ é a velocidade horizontal do fluido, e $g$ é a força da gravidade.
+        \item Vantagens: Fornece um campo de velocidade completo para a superfície e pode ser facilmente estendida com várias condições de contorno.
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Modelo de Propagação de Ondas}
+\begin{frame}{Geração de Ondas Quebrando}
     \begin{itemize}
-        \item Modelo baseado em sistema de molas para simulação de ondas:
+        \item \textbf{Detecção:} Identificação de regiões com frentes de ondas íngremes onde a inclinação da altura do fluido é maior que um limiar e a velocidade do fluido se opõe ao gradiente da altura.
+        \item \textbf{Critério de Detecção:} $|\nabla H(x)| > t_H$ e $\nabla H(x) \cdot u(x) < 0$, onde $t_H = p_H g \Delta t / \Delta x$.
+        \item \textbf{Construção de Linhas de Onda:} Criação de linhas de pontos conectados ao longo da frente da onda.
+        \item As linhas são advectadas usando a velocidade da onda e projetadas ao longo do gradiente de altura.
+        \item \textbf{Geração de Patches de Fluidos:} Criação de patches de partículas conectadas ao longo da linha da onda para representar a onda quebrando.
+        \item A velocidade das partículas do patch é calculada com base na velocidade da linha da onda e na energia potencial.
     \end{itemize}
-    \begin{verbatim}
-class PropagationSpringModel {
-    constructor(rows, columns) {
-        this.heightField = new Float32Array(rows * columns);
-        this.velocityField = new Float32Array(rows * columns);
+\end{frame}
+
+\begin{frame}{Demonstração}
+    \begin{columns}
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/real-time-1.png}
         
-        // Constantes físicas da simulação
-        this.springConstant = 0.008;  // Elasticidade
-        this.damping = 0.025;         // Amortecimento
-        this.propagationSpeed = 5.0;   // Velocidade
-    }
-}
-    \end{verbatim}
+        \column{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imgs/real-time-2.png}
+    \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Renderização com Three.js}
+\begin{frame}{Resultados e Desempenho}
     \begin{itemize}
-        \item Configuração básica da cena 3D:
-    \end{itemize}
-    \begin{verbatim}
-class OceanSimulation {
-    constructor() {
-        this.scene = new THREE.Scene();
-        this.camera = new THREE.PerspectiveCamera(45);
-        
-        // Material realista para água
-        this.waterMaterial = new THREE.MeshPhongMaterial({
-            color: 0x006994,
-            specular: 0x111111,
-            shininess: 40
-        });
-    }
-}
-    \end{verbatim}
-\end{frame}
-
-%=================================================
-\section{Técnicas Avançadas de Simulação}
-%=================================================
-\begin{frame}{Survey: Estado da Arte em Simulação de Oceanos}
-    \begin{itemize}
-        \item Survey de técnicas de simulação \cite{darles2011survey}:
-        \begin{itemize}
-            \item Métodos baseados em física
-            \item Métodos de domínio espacial
-            \item Técnicas híbridas para melhor performance
-        \end{itemize}
-        \item Desafios identificados no survey:
-        \begin{itemize}
-            \item Equilíbrio entre realismo e performance
-            \item Simulação de fenômenos complexos
-            \item Integração com sistemas em tempo real
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Survey: Técnicas Avançadas}
-    \begin{itemize}
-        \item Método Euleriano baseado em física \cite{thurey2007realtime}:
-        \begin{itemize}
-            \item Simulação em tempo real de águas rasas
-            \item Modelagem realista de ondas quebrando
-            \item Otimizado para GPU
-        \end{itemize}
-        \item Técnicas modernas de GPU \cite{bonaventura2018terrain}:
-        \begin{itemize}
-            \item Tesselação dinâmica da superfície
-            \item Nível de detalhe adaptativo
-            \item Otimização de geometria em tempo real
-        \end{itemize}
+        \item Simulações em tempo real de ondas quebrando com taxas de quadros de 40 a 75 fps em hardware comum.
+        \item O modelo permite a criação de ondas em diversas configurações e condições.
+        \item A simulação de fluidos representa cerca de 80% do tempo de execução, enquanto a renderização e o overhead do motor gráfico consomem os 20% restantes.
+        \item Aproximadamente metade do tempo de simulação é gasto na simulação de águas rasas, e um quarto é gasto no algoritmo de simulação de ondas.
     \end{itemize}
 \end{frame}
 
@@ -254,6 +215,7 @@ class OceanSimulation {
 \section{Referências}
 %=================================================
 \begin{frame}[allowframebreaks]{Referências}
+    \nocite{*}
     \bibliographystyle{plain}
     \bibliography{Bibliografia}
 \end{frame}
