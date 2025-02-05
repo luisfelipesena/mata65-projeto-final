@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex main"] 1738714911.10477 "main.aux" "main.bbl" "main" 1738714915.06964 0
+["bibtex main"] 1738714911.10477 "main.aux" "main.bbl" "main" 1738715005.47706 0
   "./Bibliografia.bib" 1738711776.48356 1204 eb9f4bacf5f362ecadeadd72f821a03e ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1738714914.76454 4938 81c8d7404570c82a45e55428dec82239 "pdflatex"
+  "main.aux" 1738715005.17625 4938 81c8d7404570c82a45e55428dec82239 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1738714911.19347 "/Users/luisfelipesena/Development/UFBA/mata65-projeto-final/main.tex" "main.pdf" "main" 1738714915.06976 0
-  "/Users/luisfelipesena/Development/UFBA/mata65-projeto-final/main.tex" 1738714907.05722 9640 4f75f0b9d3325f9d4a800789e472c2fc ""
+["pdflatex"] 1738715002.03339 "/Users/luisfelipesena/Development/UFBA/mata65-projeto-final/main.tex" "main.pdf" "main" 1738715005.47716 0
+  "/Users/luisfelipesena/Development/UFBA/mata65-projeto-final/main.tex" 1738715001.77706 9642 33945b6644f5ec7d1dd7ca7459719aa0 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1202520719 2840 216e6e45ad352e2456e1149f28885bee ""
@@ -277,12 +277,12 @@
   "imgs/wave-artigo-1.png" 1738712832.25388 1887361 29553e6541a4a5f55b4be43479482900 ""
   "imgs/wave-artigo-2.png" 1738712881.46632 2421308 621691f672de5ece7491c5ff8a85bdca ""
   "imgs/wave.png" 1738640119.86565 120496 04f6ab04cf737f5609fb9a8ea721da67 ""
-  "main.aux" 1738714914.76454 4938 81c8d7404570c82a45e55428dec82239 "pdflatex"
+  "main.aux" 1738715005.17625 4938 81c8d7404570c82a45e55428dec82239 "pdflatex"
   "main.bbl" 1738714911.19036 769 8ec0b6890489dbd7f45d8932e71e14f4 "bibtex main"
-  "main.nav" 1738714914.76574 2915 5fb201adbaef31c480d05367688d4980 "pdflatex"
-  "main.out" 1738714914.76552 1101 3eb36815d0a42c8f040ee0a4d706a011 "pdflatex"
-  "main.tex" 1738714907.05722 9640 4f75f0b9d3325f9d4a800789e472c2fc ""
-  "main.toc" 1738714914.76576 397 b6050ad4f9771f62d4d260680df5059a "pdflatex"
+  "main.nav" 1738715005.17722 2915 5fb201adbaef31c480d05367688d4980 "pdflatex"
+  "main.out" 1738715005.17705 1101 3eb36815d0a42c8f040ee0a4d706a011 "pdflatex"
+  "main.tex" 1738715001.77706 9642 33945b6644f5ec7d1dd7ca7459719aa0 ""
+  "main.toc" 1738715005.17725 397 b6050ad4f9771f62d4d260680df5059a "pdflatex"
   (generated)
   "main.aux"
   "main.log"
